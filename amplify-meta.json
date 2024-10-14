@@ -1,0 +1,174 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-imnchargeapp-dev-cf51a-authRole",
+      "UnauthRoleArn": "arn:aws:iam::222634388409:role/amplify-imnchargeapp-dev-cf51a-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::222634388409:role/amplify-imnchargeapp-dev-cf51a-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-imnchargeapp-dev-cf51a-deployment",
+      "UnauthRoleName": "amplify-imnchargeapp-dev-cf51a-unauthRole",
+      "StackName": "amplify-imnchargeapp-dev-cf51a",
+      "StackId": "arn:aws:cloudformation:us-east-1:222634388409:stack/amplify-imnchargeapp-dev-cf51a/f4e06740-899e-11ef-a58d-0e67ecf200f5",
+      "AmplifyAppId": "d26gchl6yt2tr5"
+    }
+  },
+  "storage": {
+    "UserBudget": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-imnchargeapp-dev-cf51a-deployment/amplify-cfn-templates/storage/UserBudget-cloudformation-template.json",
+        "logicalId": "storageUserBudget"
+      },
+      "lastPushTimeStamp": "2024-10-13T23:41:36.983Z",
+      "output": {
+        "PartitionKeyName": "budgetID",
+        "SortKeyName": "createdAt",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:222634388409:table/UserBudget-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:222634388409:table/UserBudget-dev/stream/2024-10-13T23:39:41.217",
+        "PartitionKeyType": "S",
+        "Name": "UserBudget-dev"
+      },
+      "lastPushDirHash": "tY7foWmvBif2App4TE+JkD4YLv4="
+    },
+    "UserExpenses": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-imnchargeapp-dev-cf51a-deployment/amplify-cfn-templates/storage/UserExpenses-cloudformation-template.json",
+        "logicalId": "storageUserExpenses"
+      },
+      "lastPushTimeStamp": "2024-10-13T23:41:36.983Z",
+      "output": {
+        "PartitionKeyName": "expenseID",
+        "SortKeyName": "userID",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:222634388409:table/UserExpenses-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:222634388409:table/UserExpenses-dev/stream/2024-10-13T23:39:41.070",
+        "PartitionKeyType": "S",
+        "Name": "UserExpenses-dev"
+      },
+      "lastPushDirHash": "nmD1rXA6UkiybrjuU4aSlYxIMQ8="
+    }
+  },
+  "function": {
+    "BudgetMaster001": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "UserBudget",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2024-10-13T23:39:23.130Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-10-13T23:39:24.840Z",
+      "distZipFilename": "BudgetMaster001-634b583062384b2f2f6a-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-imnchargeapp-dev-cf51a-deployment",
+        "s3Key": "amplify-builds/BudgetMaster001-634b583062384b2f2f6a-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-imnchargeapp-dev-cf51a-deployment/amplify-cfn-templates/function/BudgetMaster001-cloudformation-template.json",
+        "logicalId": "functionBudgetMaster001"
+      },
+      "lastPushTimeStamp": "2024-10-13T23:41:36.983Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::222634388409:role/imnchargeappLambdaRole07f7446d-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:222634388409:function:BudgetMaster001-dev",
+        "Name": "BudgetMaster001-dev",
+        "LambdaExecutionRole": "imnchargeappLambdaRole07f7446d-dev"
+      },
+      "lastPushDirHash": "ADU8H5UjWBQOFtVXjf81tTqrptM="
+    },
+    "handleExpensesReuests": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "UserExpenses",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2024-10-13T23:39:29.782Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-10-13T23:39:31.251Z",
+      "distZipFilename": "handleExpensesReuests-5a75494361546a693564-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-imnchargeapp-dev-cf51a-deployment",
+        "s3Key": "amplify-builds/handleExpensesReuests-5a75494361546a693564-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-imnchargeapp-dev-cf51a-deployment/amplify-cfn-templates/function/handleExpensesReuests-cloudformation-template.json",
+        "logicalId": "functionhandleExpensesReuests"
+      },
+      "lastPushTimeStamp": "2024-10-13T23:41:36.983Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::222634388409:role/imnchargeappLambdaRoledc1b1be3-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:222634388409:function:handleExpensesReuests-dev",
+        "Name": "handleExpensesReuests-dev",
+        "LambdaExecutionRole": "imnchargeappLambdaRoledc1b1be3-dev"
+      },
+      "lastPushDirHash": "8gcGqZpZYpY4i1YRb3Iw2e4k6io="
+    }
+  },
+  "api": {
+    "increstapi001": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "BudgetMaster001",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "handleExpensesReuests",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-imnchargeapp-dev-cf51a-deployment/amplify-cfn-templates/api/increstapi001-cloudformation-template.json",
+        "logicalId": "apiincrestapi001"
+      },
+      "lastPushTimeStamp": "2024-10-13T23:41:36.983Z",
+      "output": {
+        "ApiName": "increstapi001",
+        "RootUrl": "https://0b97rkjsrh.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "0b97rkjsrh"
+      },
+      "lastPushDirHash": "NPrWKUN5B7gUedPVt9ZG8PAE21k="
+    }
+  }
+}
