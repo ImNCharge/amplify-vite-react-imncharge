@@ -1,13 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I’m N Charge | Financial Freedom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo">
+            <h1>I’m N Charge</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Take Control of Your Finances</h2>
+        <p>Empowering 1 Million People to Break Free from Debt by 2025</p>
+        <button class="cta-button" onclick="scrollToSection('contact')">Get Started Today</button>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>We empower individuals and families to take charge of their finances using proven biblical principles.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <h2>Our Services</h2>
+        <div class="service">
+            <h3>Personal Financial Coaching</h3>
+            <p>One-on-one coaching to help you manage your money, pay off debt, and build wealth.</p>
+        </div>
+        <div class="service">
+            <h3>Business Financial Strategy</h3>
+            <p>Helping businesses with financial planning and growth strategies.</p>
+        </div>
+        <div class="service">
+            <h3>Faith-Based Counseling</h3>
+            <p>Align your financial decisions with your faith for lasting impact.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <h2>Testimonials</h2>
+        <blockquote>
+            <p>"I’m N Charge helped me get out of debt and build a financial future. The coaching was invaluable!"</p>
+            <cite>- Satisfied Client</cite>
+        </blockquote>
+        <blockquote>
+            <p>"Thanks to the guidance from I’m N Charge, I now have a sustainable business and financial plan."</p>
+            <cite>- Business Owner</cite>
+        </blockquote>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2024 I’m N Charge. All Rights Reserved.</p>
+        <ul class="social-links">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+        </ul>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
 </html>
